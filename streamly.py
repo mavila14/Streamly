@@ -13,7 +13,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 GEMINI_MODEL = "gemini-2.0-flash"
 
 # ------------------------------------------------------------
-# Custom CSS
+# Custom CSS for Dark Theme
 # ------------------------------------------------------------
 custom_css = """
 <style>
@@ -21,12 +21,7 @@ custom_css = """
 
 html, body, [data-testid="stAppViewContainer"] {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #1a202c;
     -webkit-font-smoothing: antialiased;
-}
-
-.main {
-    background: linear-gradient(145deg, #f8fafc 0%, #edf2f7 100%);
 }
 
 /* Headings */
@@ -34,37 +29,30 @@ h1 {
     font-weight: 800;
     font-size: 2.5rem;
     letter-spacing: -0.025em;
-    color: #1a202c;
     line-height: 1.2;
     margin-bottom: 1rem;
+    color: #6c7ed6;
 }
 h2 {
     font-weight: 700;
     font-size: 1.8rem;
     letter-spacing: -0.025em;
-    color: #2d3748;
     margin-top: 1.5rem;
     margin-bottom: 0.75rem;
 }
 h3 {
     font-weight: 600;
     font-size: 1.3rem;
-    color: #4a5568;
     margin-top: 1.25rem;
     margin-bottom: 0.5rem;
 }
 p {
     font-size: 1rem;
     line-height: 1.6;
-    color: #4a5568;
     margin-bottom: 1rem;
 }
 
-/* Sidebar styling */
-[data-testid="stSidebar"] {
-    background-color: #fff;
-    border-right: 1px solid #e2e8f0;
-}
+/* Sidebar styling - dark theme */
 [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {
     padding-top: 2rem;
     padding-left: 1.5rem;
@@ -72,77 +60,101 @@ p {
 }
 [data-testid="stSidebar"] h1 {
     font-size: 1.5rem;
-    color: #5a67d8;
+    color: #6c7ed6;
     margin-bottom: 2rem;
 }
 
-/* Custom form inputs */
+/* Custom form inputs for dark theme */
 [data-testid="stTextInput"] input,
 [data-testid="stNumberInput"] input,
 [data-testid="stTextArea"] textarea,
 [data-testid="stSelectbox"] {
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-    padding: 0.75rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 12px;
     width: 100%;
     margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
 }
 [data-testid="stTextInput"] input:focus,
 [data-testid="stNumberInput"] input:focus,
 [data-testid="stTextArea"] textarea:focus {
-    border-color: #5a67d8;
-    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.15);
+    border-color: #6c7ed6;
+    box-shadow: 0 0 0 2px rgba(108, 126, 214, 0.3);
 }
 
-/* Eye-catching button styling */
+/* Style number input */
+[data-testid="stNumberInput"] div[data-baseweb="input"] {
+    background-color: transparent !important;
+}
+
+/* Hide standard number input controls */
+[data-testid="stNumberInput"] div[data-baseweb="input-container"] div[role="button"] {
+    display: none !important;
+}
+
+/* Button styling for dark theme */
 [data-testid="baseButton-secondary"], 
 .stButton button {
-    background: linear-gradient(135deg, #C084FC 0%, #A855F7 100%) !important;
+    background: rgba(108, 126, 214, 0.8) !important;
     color: white !important;
     border: none !important;
-    border-radius: 8px !important;
-    padding: 0.75rem 1.5rem !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 1.5rem !important;
     font-size: 1rem !important;
-    font-weight: 700 !important;
+    font-weight: 600 !important;
     letter-spacing: 0.025em !important;
-    text-transform: uppercase !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
-    box-shadow: 0 4px 6px rgba(168,85,247, 0.3), 0 1px 3px rgba(168,85,247, 0.2) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    width: 100% !important;
 }
 [data-testid="baseButton-secondary"]:hover, 
 .stButton button:hover {
-    background: linear-gradient(135deg, #9F7AEA 0%, #7B2CBF 100%) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 7px 14px rgba(122, 64, 228, 0.3), 0 3px 6px rgba(122, 64, 228, 0.2) !important;
+    background: rgba(138, 148, 227, 0.9) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important;
 }
 [data-testid="baseButton-secondary"]:active, 
 .stButton button:active {
     transform: translateY(0) !important;
-    box-shadow: 0 3px 6px rgba(122, 64, 228, 0.2), 0 1px 3px rgba(122, 64, 228, 0.1) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
-/* Card styling */
+/* Plus/minus buttons */
+.stButton button[kind="secondary"] {
+    background: rgba(70, 70, 70, 0.3) !important;
+    border-radius: 50% !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Card styling for dark theme */
 .card {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.025);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    border: 1px solid #f0f4f8;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.07), 0 20px 30px rgba(0, 0, 0, 0.035);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 20px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* Landing page title styling */
+/* Landing page title styling for dark theme */
 .landing-title {
     font-size: 3.5rem;
     font-weight: 900;
-    background: linear-gradient(135deg, #5a67d8 0%, #4c51bf 100%);
+    background: linear-gradient(135deg, #6c7ed6 0%, #8a94e3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0.5rem;
@@ -153,7 +165,7 @@ p {
 .landing-subtitle {
     font-size: 1.25rem;
     font-weight: 500;
-    color: #4a5568;
+    color: rgba(255, 255, 255, 0.7);
     margin-bottom: 2rem;
     text-align: center;
 }
@@ -205,14 +217,14 @@ p {
     font-size: 1rem;
 }
 
-/* Decision box */
+/* Decision box for dark theme */
 .decision-box {
-    background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+    background: rgba(108, 126, 214, 0.1);
     border-radius: 12px;
     padding: 2rem 1.5rem;
     margin-top: 2rem;
-    border: 1px solid #f0f4f8;
-    box-shadow: 0 10px 25px rgba(90, 103, 216, 0.12), 0 4px 10px rgba(90, 103, 216, 0.08);
+    border: 1px solid rgba(108, 126, 214, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
     text-align: center;
     animation: fadeInUp 0.5s ease-out forwards;
     transform: translateY(20px);
@@ -221,15 +233,15 @@ p {
 .decision-box h2 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #5a67d8;
+    color: #8a94e3;
     margin-bottom: 1.5rem;
 }
 .decision-box .score {
     font-size: 3rem;
     font-weight: 800;
-    color: #5a67d8;
+    color: #8a94e3;
     margin: 1rem 0;
-    text-shadow: 0 2px 4px rgba(90, 103, 216, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 .recommendation {
     margin-top: 1rem;
@@ -246,33 +258,33 @@ p {
     color: #ed8936;
 }
 
-/* Factor cards */
+/* Factor cards for dark theme */
 .factor-card {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 0.75rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease;
-    border-left: 4px solid #5a67d8;
+    border-left: 4px solid #6c7ed6;
 }
 .factor-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     transform: translateX(3px);
 }
 .factor-card .factor-letter {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #5a67d8;
+    color: #8a94e3;
     margin-right: 1rem;
     width: 2rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ebf4ff;
+    background-color: rgba(108, 126, 214, 0.2);
     border-radius: 50%;
 }
 .factor-card .factor-description {
@@ -284,36 +296,36 @@ p {
     margin-left: auto;
 }
 .factor-card .factor-value.positive {
-    color: #48bb78;
+    color: #68d391;
 }
 .factor-card .factor-value.negative {
-    color: #f56565;
+    color: #fc8181;
 }
 .factor-card .factor-value.neutral {
-    color: #a0aec0;
+    color: #cbd5e0;
 }
 
-/* Item card styles */
+/* Item card styles for dark theme */
 .item-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 1rem;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
 }
 .item-icon {
     width: 40px;
     height: 40px;
-    background: #ebf4ff;
+    background: rgba(108, 126, 214, 0.3);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 1rem;
-    color: #5a67d8;
+    color: #8a94e3;
     font-weight: 700;
     font-size: 1.25rem;
 }
@@ -323,12 +335,12 @@ p {
 .item-name {
     font-weight: 600;
     font-size: 1.1rem;
-    color: #2d3748;
+    color: rgba(255, 255, 255, 0.9);
 }
 .item-cost {
     font-weight: 700;
     font-size: 1.2rem;
-    color: #5a67d8;
+    color: #8a94e3;
 }
 
 /* Animations */
@@ -349,21 +361,9 @@ st.markdown(custom_css, unsafe_allow_html=True)
 # ------------------------------------------------------------
 # Helper Functions
 # ------------------------------------------------------------
-def render_logo():
-    st.markdown("""
-    <div class="logo">
-        <div class="logo-icon">M</div>
-        <div class="logo-text">Munger AI</div>
-    </div>
-    """, unsafe_allow_html=True)
+# Function removed as we're using inline styling instead
 
-def render_section_header(title, icon):
-    st.markdown(f"""
-    <div class="section-header">
-        <div class="section-icon">{icon}</div>
-        <h2>{title}</h2>
-    </div>
-    """, unsafe_allow_html=True)
+# Function removed as we're using inline styling directly in the main flow
 
 # ------------------------------------------------------------
 # Plotly Charts
@@ -525,61 +525,40 @@ def get_recommendation(pds):
 # ------------------------------------------------------------
 # Additional UI Helpers
 # ------------------------------------------------------------
-def render_item_card(item_name, cost):
-    icon = "💼" if cost >= 1000 else "🛍️"
-    st.markdown(f"""
-    <div class="item-card">
-        <div class="item-icon">{icon}</div>
-        <div class="item-details">
-            <div class="item-name">{item_name}</div>
-        </div>
-        <div class="item-cost">${cost:,.2f}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-def render_factor_card(factor, value, description):
-    if value > 0:
-        val_class = "positive"
-    elif value < 0:
-        val_class = "negative"
-    else:
-        val_class = "neutral"
-    st.markdown(f"""
-    <div class="factor-card">
-        <div class="factor-letter">{factor}</div>
-        <div class="factor-description">{description}</div>
-        <div class="factor-value {val_class}">{value:+d}</div>
-    </div>
-    """, unsafe_allow_html=True)
+# Functions removed as we're using inline styling directly in the main flow
 
 # ------------------------------------------------------------
 # Main App
 # ------------------------------------------------------------
 def main():
     with st.sidebar:
-        render_logo()
-        st.markdown("##### Decision Assistant")
+        # Simple logo with just text
+        st.markdown("""
+        <div style="margin-bottom: 1.5rem;">
+            <h1 style="color: #6c7ed6; font-size: 1.5rem; font-weight: 700;">Decision Assistant</h1>
+        </div>
+        """, unsafe_allow_html=True)
         
-        # Only two pages now:
+        # Radio selection for tools
         pages = ["Decision Tool", "Advanced Tool"]
         selection = st.radio("", pages, label_visibility="collapsed")
         
-        st.markdown("---")
+        st.markdown("<hr style='margin: 1.5rem 0; opacity: 0.2;'>", unsafe_allow_html=True)
         st.markdown("### Quick Tips")
         st.markdown("""
         - Just enter the item and cost
         - Or use Advanced Tool for more control
-        - Score above 5 means you should buy
+        - Score above 5 = buy
         """)
         
-        st.markdown("---")
-        st.markdown("© 2025 Munger AI")
+        st.markdown("<hr style='margin: 1.5rem 0; opacity: 0.2;'>", unsafe_allow_html=True)
+        st.markdown("<div style='opacity: 0.7; font-size: 0.8rem;'>© 2025 Munger AI</div>", unsafe_allow_html=True)
     
     # Main heading (always shown)
     st.markdown("""
     <div style="text-align: center; margin-bottom: 2rem;">
-        <h1 class="landing-title">Munger AI</h1>
-        <p class="landing-subtitle">Should you buy it? Our AI decides in seconds.</p>
+        <h1 style="font-size: 3rem; font-weight: 800; color: #6c7ed6; margin-bottom: 0.5rem;">Munger AI</h1>
+        <p style="font-size: 1.1rem; opacity: 0.7; margin-bottom: 2rem;">Should you buy it? Our AI decides in seconds.</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -587,16 +566,40 @@ def main():
     # 1. Basic Decision Tool
     # -----------------------------------
     if selection == "Decision Tool":
-        render_section_header("What are you buying?", "🛍️")
-        # Basic form
+        # Icon and heading
+        st.markdown("""
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <div style="background-color: #fff; border-radius: 10px; padding: 10px; margin-right: 15px;">
+                <span style="font-size: 24px;">🛍️</span>
+            </div>
+            <h1 style="font-size: 36px; color: #6c7ed6; margin: 0;">What are you buying?</h1>
+        </div>
+        <hr style="margin-bottom: 30px; border-color: rgba(255,255,255,0.1);">
+        """, unsafe_allow_html=True)
+        
+        # Basic form with larger input fields
         with st.form("basic_form"):
-            col1, col2 = st.columns([3,1])
-            with col1:
-                item_name = st.text_input("What are you buying?", value="New Laptop")
-            with col2:
-                cost = st.number_input("Cost ($)", min_value=1.0, value=500.0, step=50.0)
+            st.markdown('<p style="font-size: 18px; margin-bottom: 5px;">What are you buying?</p>', unsafe_allow_html=True)
+            item_name = st.text_input("", value="New Laptop", label_visibility="collapsed")
             
-            submit_btn = st.form_submit_button("Should I Buy It?")
+            col1, col2, col3 = st.columns([2, 1, 1])
+            with col1:
+                st.markdown('<p style="font-size: 18px; margin-bottom: 5px;">Cost ($)</p>', unsafe_allow_html=True)
+            with col2:
+                cost = st.number_input("", min_value=1.0, value=500.0, step=50.0, label_visibility="collapsed")
+            with col3:
+                st.write("")
+                st.write("")
+                minus, plus = st.columns(2)
+                with minus:
+                    st.button("-", key="minus")
+                with plus:
+                    st.button("+", key="plus")
+            
+            # Centered button with custom styling
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                submit_btn = st.form_submit_button("Should I Buy It?")
         
         if submit_btn:
             with st.spinner("Analyzing with AI..."):
@@ -617,12 +620,44 @@ def main():
                 pds = compute_pds(factors)
                 rec_text, rec_class = get_recommendation(pds)
                 
-                render_item_card(item_name, cost)
+                # Item card
                 st.markdown(f"""
-                <div class="decision-box">
-                    <h2>Purchase Decision Score</h2>
-                    <div class="score">{pds}</div>
-                    <div class="recommendation {rec_class}">{rec_text}</div>
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1rem; 
+                            margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: rgba(108, 126, 214, 0.3); 
+                                border-radius: 8px; display: flex; align-items: center; justify-content: center;
+                                margin-right: 1rem; color: #8a94e3; font-weight: 700; font-size: 1.25rem;">
+                        {"💼" if cost >= 1000 else "🛍️"}
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; font-size: 1.1rem; color: rgba(255, 255, 255, 0.9);">
+                            {item_name}
+                        </div>
+                    </div>
+                    <div style="font-weight: 700; font-size: 1.2rem; color: #8a94e3;">
+                        ${cost:,.2f}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Decision box with PDS score
+                st.markdown(f"""
+                <div style="background: rgba(108, 126, 214, 0.1); border-radius: 12px; padding: 2rem 1.5rem;
+                            margin-top: 2rem; border: 1px solid rgba(108, 126, 214, 0.3);
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+                            text-align: center; animation: fadeInUp 0.5s ease-out forwards;">
+                    <h2 style="font-size: 1.75rem; font-weight: 700; color: #8a94e3; margin-bottom: 1.5rem;">
+                        Purchase Decision Score
+                    </h2>
+                    <div style="font-size: 3rem; font-weight: 800; color: #8a94e3; margin: 1rem 0;
+                                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);">
+                        {pds}
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 1.25rem; font-weight: 600; 
+                                color: {'#68d391' if rec_class == 'positive' else '#fc8181' if rec_class == 'negative' else '#ed8936'};">
+                        {rec_text}
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -636,8 +671,32 @@ def main():
                         "L": "Long-Term Impact",
                         "B": "Behavioral"
                     }
+                    
                     for f in ["D","O","G","L","B"]:
-                        render_factor_card(f, factors[f], factor_labels[f])
+                        value = factors[f]
+                        val_class = "positive" if value > 0 else "negative" if value < 0 else "neutral"
+                        val_color = "#68d391" if value > 0 else "#fc8181" if value < 0 else "#cbd5e0"
+                        
+                        st.markdown(f"""
+                        <div style="display: flex; align-items: center; background-color: rgba(255, 255, 255, 0.05);
+                                    border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; 
+                                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: all 0.2s ease;
+                                    border-left: 4px solid #6c7ed6;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: #8a94e3; margin-right: 1rem;
+                                        width: 2rem; height: 2rem; display: flex; align-items: center; 
+                                        justify-content: center; background-color: rgba(108, 126, 214, 0.2); 
+                                        border-radius: 50%;">
+                                {f}
+                            </div>
+                            <div style="flex: 1;">
+                                {factor_labels[f]}
+                            </div>
+                            <div style="font-size: 1.25rem; font-weight: 700; margin-left: auto; color: {val_color};">
+                                {value:+d}
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
                         if f"{f}_explanation" in factors:
                             st.caption(factors[f"{f}_explanation"])
                 with c2:
@@ -652,10 +711,20 @@ def main():
     # 2. Advanced Tool
     # -----------------------------------
     else:  # selection == "Advanced Tool"
-        render_section_header("Advanced Purchase Query", "⚙️")
+        # Icon and heading
         st.markdown("""
-        Customize **all** parameters for a more precise analysis.
-        """)
+        <div style="display: flex; align-items: center; margin-bottom: 20px;">
+            <div style="background-color: #fff; border-radius: 10px; padding: 10px; margin-right: 15px;">
+                <span style="font-size: 24px;">⚙️</span>
+            </div>
+            <h1 style="font-size: 36px; color: #6c7ed6; margin: 0;">Advanced Purchase Query</h1>
+        </div>
+        <hr style="margin-bottom: 30px; border-color: rgba(255,255,255,0.1);">
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <p style="font-size: 16px; opacity: 0.8;">Customize <strong>all</strong> parameters for a more precise analysis.</p>
+        """, unsafe_allow_html=True)
         
         with st.form("advanced_form"):
             st.subheader("Purchase Details")
@@ -687,12 +756,44 @@ def main():
                 pds = compute_pds(factors)
                 rec_text, rec_class = get_recommendation(pds)
                 
-                render_item_card(item_name, item_cost)
+                # Item card
                 st.markdown(f"""
-                <div class="decision-box">
-                    <h2>Purchase Decision Score</h2>
-                    <div class="score">{pds}</div>
-                    <div class="recommendation {rec_class}">{rec_text}</div>
+                <div style="background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1rem; 
+                            margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+                            border: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center;">
+                    <div style="width: 40px; height: 40px; background: rgba(108, 126, 214, 0.3); 
+                                border-radius: 8px; display: flex; align-items: center; justify-content: center;
+                                margin-right: 1rem; color: #8a94e3; font-weight: 700; font-size: 1.25rem;">
+                        {"💼" if item_cost >= 1000 else "🛍️"}
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; font-size: 1.1rem; color: rgba(255, 255, 255, 0.9);">
+                            {item_name}
+                        </div>
+                    </div>
+                    <div style="font-weight: 700; font-size: 1.2rem; color: #8a94e3;">
+                        ${item_cost:,.2f}
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Decision box with PDS score
+                st.markdown(f"""
+                <div style="background: rgba(108, 126, 214, 0.1); border-radius: 12px; padding: 2rem 1.5rem;
+                            margin-top: 2rem; border: 1px solid rgba(108, 126, 214, 0.3);
+                            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25), 0 4px 10px rgba(0, 0, 0, 0.15);
+                            text-align: center; animation: fadeInUp 0.5s ease-out forwards;">
+                    <h2 style="font-size: 1.75rem; font-weight: 700; color: #8a94e3; margin-bottom: 1.5rem;">
+                        Purchase Decision Score
+                    </h2>
+                    <div style="font-size: 3rem; font-weight: 800; color: #8a94e3; margin: 1rem 0;
+                                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);">
+                        {pds}
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 1.25rem; font-weight: 600; 
+                                color: {'#68d391' if rec_class == 'positive' else '#fc8181' if rec_class == 'negative' else '#ed8936'};">
+                        {rec_text}
+                    </div>
                 </div>
                 """, unsafe_allow_html=True)
                 
@@ -706,8 +807,32 @@ def main():
                         "L": "Long-Term Impact",
                         "B": "Behavioral"
                     }
+                    
                     for f in ["D","O","G","L","B"]:
-                        render_factor_card(f, factors[f], factor_labels[f])
+                        value = factors[f]
+                        val_class = "positive" if value > 0 else "negative" if value < 0 else "neutral"
+                        val_color = "#68d391" if value > 0 else "#fc8181" if value < 0 else "#cbd5e0"
+                        
+                        st.markdown(f"""
+                        <div style="display: flex; align-items: center; background-color: rgba(255, 255, 255, 0.05);
+                                    border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; 
+                                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); transition: all 0.2s ease;
+                                    border-left: 4px solid #6c7ed6;">
+                            <div style="font-size: 1.25rem; font-weight: 700; color: #8a94e3; margin-right: 1rem;
+                                        width: 2rem; height: 2rem; display: flex; align-items: center; 
+                                        justify-content: center; background-color: rgba(108, 126, 214, 0.2); 
+                                        border-radius: 50%;">
+                                {f}
+                            </div>
+                            <div style="flex: 1;">
+                                {factor_labels[f]}
+                            </div>
+                            <div style="font-size: 1.25rem; font-weight: 700; margin-left: auto; color: {val_color};">
+                                {value:+d}
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
                         if f"{f}_explanation" in factors:
                             st.caption(factors[f"{f}_explanation"])
                 with c2:
@@ -719,7 +844,21 @@ def main():
                     st.plotly_chart(gauge_fig, use_container_width=True)
 
 # ------------------------------------------------------------
+# Configure the theme to dark mode
+# ------------------------------------------------------------
+def setup_dark_theme():
+    # Create a .streamlit directory if it doesn't exist
+    import os
+    if not os.path.exists(".streamlit"):
+        os.makedirs(".streamlit")
+    
+    # Write dark theme config
+    with open(".streamlit/config.toml", "w") as f:
+        f.write("[theme]\nbase = \"dark\"\n")
+
+# ------------------------------------------------------------
 # Run the App
 # ------------------------------------------------------------
 if __name__ == "__main__":
+    setup_dark_theme()
     main()
