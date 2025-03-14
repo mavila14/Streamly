@@ -569,7 +569,7 @@ def main():
         st.markdown("""
         - Just enter the item and cost
         - Or use Advanced Tool for more control
-        - Score above 5 = buy
+        - Score above 5 means you should buy
         """)
         
         st.markdown("---")
